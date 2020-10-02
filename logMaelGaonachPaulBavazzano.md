@@ -1,3 +1,5 @@
-# Maël GAONACH - Paul Bavazzano
+# Maël GAONACH - Paul BAVAZZANO
 
 ## Résumé de chaque séance :
+
+ - Séance 1 (02/10/2020) : Première lecture de l'article et prise en main par un premier exemple : celui-ci a été rédigé dans ses deux versions en haskell mais nous n'avons pas encore eu le temps de tester son exécution. Prochaine étape : valider le fonctionnement de cet exemple et en faire un second un peu plus complexe.
