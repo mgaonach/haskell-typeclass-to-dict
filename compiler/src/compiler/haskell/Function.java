@@ -2,6 +2,6 @@ package compiler.haskell;
 
 public class Function {
 
-	private string name;
+	private String name;
 
 }
