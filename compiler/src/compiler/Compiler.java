@@ -1,9 +1,12 @@
 package compiler;
 
+import compiler.haskell.Program;
+
 public class Compiler {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+
+		Program program = new Program();
 
 	}
 
