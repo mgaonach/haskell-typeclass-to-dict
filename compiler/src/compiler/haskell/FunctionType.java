@@ -4,5 +4,15 @@ import java.util.*;
 
 public class FunctionType {
 
-	Collection<Function> functions;
+	List<Function> functions;
+
+	public FunctionType(List<Function> functions) {
+		this.functions = functions;
+	}
+
+	public List<Function> getFunctions() {
+		return functions;
+	}
+
+
 }
