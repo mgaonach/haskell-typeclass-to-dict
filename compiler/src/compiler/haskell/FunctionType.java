@@ -11,4 +11,8 @@ public class FunctionType {
 		this.types = Arrays.asList(types);
 	}
 
+	public List<Type> getTypes() {
+		return types;
+	}
+
 }

@@ -9,4 +9,8 @@ public class DataInstanceVar extends DataInstance {
 		this.name = name;
 	}
 
+	public String getName() {
+		return name;
+	}
+
 }
