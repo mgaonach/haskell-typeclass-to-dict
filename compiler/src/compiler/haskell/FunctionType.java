@@ -7,7 +7,7 @@ public class FunctionType {
 
 	private List<Type> types;
 
-	FunctionType(Type... types) {
+	public FunctionType(Type... types) {
 		this.types = Arrays.asList(types);
 	}
 

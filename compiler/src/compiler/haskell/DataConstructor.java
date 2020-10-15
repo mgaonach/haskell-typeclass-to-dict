@@ -6,7 +6,7 @@ import java.util.List;
 public class DataConstructor {
 
 	private String name;
-	private List<Type> types = new ArrayList<>();
+	private List<Type> params = new ArrayList<>();
 
 	public DataConstructor(String name) {
 		super();
@@ -17,8 +17,13 @@ public class DataConstructor {
 		return name;
 	}
 
-	public List<Type> getTypes() {
-		return types;
+	public List<Type> getParams() {
+		return params;
+	}
+
+	public DataConstructor addParam(Type param) {
+		this.params.add(param);
+		return this;
 	}
 
 }
