@@ -1,29 +1,29 @@
 package compiler.haskell;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Function {
 
 	private String name;
-	FunctionType functions;
-	List<FunctionCase> functionCases;
+	private FunctionType type;
+	private List<FunctionCase> functionCases = new ArrayList<>();
 
-	public Function(String name, FunctionType functions, List<FunctionCase> functionCases) {
+	public Function(String name, FunctionType type) {
 		this.name = name;
-		this.functions = functions;
-		this.functionCases = functionCases;
+		this.type = type;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public FunctionType getFunctions() {
-		return functions;
-	}
-
 	public List<FunctionCase> getFunctionCases() {
 		return functionCases;
+	}
+
+	public FunctionType getType() {
+		return type;
 	}
 
 }

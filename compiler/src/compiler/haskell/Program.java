@@ -1,12 +1,12 @@
 package compiler.haskell;
 
-import java.util.*;
+import java.util.List;
 
 public class Program {
 
-	List<Function> functions;
-	List<Class> classes;
-	List<Data> dataTypes;
+	private List<Function> functions;
+	private List<Class> classes;
+	private List<Data> dataTypes;
 
 	public Program(List<Function> functions, List<Class> classes, List<Data> dataTypes) {
 		this.functions = functions;

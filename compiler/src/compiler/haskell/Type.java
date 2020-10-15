@@ -1,8 +1,8 @@
 package compiler.haskell;
 
-public class Type {
+public abstract class Type {
 
-    public Type() {
-    }
+	public Type() {
+	}
 
 }

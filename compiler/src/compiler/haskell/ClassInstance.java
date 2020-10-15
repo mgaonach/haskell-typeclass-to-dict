@@ -1,13 +1,13 @@
 package compiler.haskell;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ClassInstance {
 
-	private List<Function> functions = new ArrayList<>();
+	private Map<String, Function> functions = new HashMap<>();
 
-	public List<Function> getFunctions() {
+	public Map<String, Function> getFunctions() {
 		return functions;
 	}
 

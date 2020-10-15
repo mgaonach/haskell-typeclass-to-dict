@@ -1,22 +1,24 @@
 package compiler.haskell;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FunctionCase {
 
-	public FunctionCase(List<DataInstance> dataInstances, DataInstance dataInstance) {
-		this.dataInstances = dataInstances;
-		this.dataInstance = dataInstance;
+	private List<DataInstance> params = new ArrayList<>();
+	private DataInstance result;
+
+	public FunctionCase(DataInstance result) {
+		super();
+		this.result = result;
 	}
 
-	public List<DataInstance> getDataInstances() {
-		return dataInstances;
+	public List<DataInstance> getParams() {
+		return params;
 	}
 
-	public DataInstance getDataInstance() {
-		return dataInstance;
+	public DataInstance getResult() {
+		return result;
 	}
 
-	List<DataInstance> dataInstances;
-	DataInstance dataInstance;
 }

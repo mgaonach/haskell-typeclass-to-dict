@@ -1,18 +1,14 @@
 package compiler.haskell;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
 public class FunctionType {
 
-	List<Function> functions;
+	private List<Type> types;
 
-	public FunctionType(List<Function> functions) {
-		this.functions = functions;
+	FunctionType(Type... types) {
+		this.types = Arrays.asList(types);
 	}
-
-	public List<Function> getFunctions() {
-		return functions;
-	}
-
 
 }
