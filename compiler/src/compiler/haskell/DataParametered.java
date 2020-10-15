@@ -1,6 +1,6 @@
 package compiler.haskell;
 
-import java.util.*;
+import java.util.Collection;
 
 public class DataParametered extends Type {
 

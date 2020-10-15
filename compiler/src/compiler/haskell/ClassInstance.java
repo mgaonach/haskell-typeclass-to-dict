@@ -1,8 +1,14 @@
 package compiler.haskell;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClassInstance {
 
-	Collection<Function> functions;
+	private List<Function> functions = new ArrayList<>();
+
+	public List<Function> getFunctions() {
+		return functions;
+	}
+
 }
