@@ -1,16 +1,7 @@
 package compiler;
 
+import compiler.haskell.*;
 import compiler.haskell.Class;
-import compiler.haskell.Data;
-import compiler.haskell.DataConstructor;
-import compiler.haskell.DataInstanceAny;
-import compiler.haskell.DataInstanceCons;
-import compiler.haskell.DataInstanceVar;
-import compiler.haskell.Function;
-import compiler.haskell.FunctionCase;
-import compiler.haskell.FunctionType;
-import compiler.haskell.GenericType;
-import compiler.haskell.HaskellDefault;
 
 public class ExampleProgram {
 
@@ -64,6 +55,33 @@ public class ExampleProgram {
 		compare.getGenericTypes().add(compareA);
 		FunctionType CompareIsSup = new FunctionType(compareA, compareA, myBool);
 		compare.getFunctions().put("isSup", CompareIsSup);
+
+		Function isSupBool = new Function("isSupBool", new FunctionType(myBool, myBool, myBool));
+		isSupBool.getFunctionCases().add(new FunctionCase(
+				new DataInstanceCons(myBool, myTrue), // Res
+				new DataInstanceCons(myBool, myTrue), // Param
+				new DataInstanceCons(myBool, myFalse) // Param
+		));
+		isSupBool.getFunctionCases().add(new FunctionCase(
+				new DataInstanceCons(myBool, myFalse), // Res
+				new DataInstanceAny(myBool), // Param
+				new DataInstanceAny(myBool) // Param
+		));
+
+//		isSupNat ::  MyNat ->  MyNat -> MyBool
+//		isSupNat (MySucc x) (MySucc y) = isSupNat x y
+//		isSupNat (MySucc x) MyZero = MyTrue
+//		isSupNat MyZero _ = MyFalse
+
+
+		Function isSupNat = new Function ("isSupNat", new FunctionType(myNat, myNat, myBool));
+		DataInstanceVar isSupNatX = new DataInstanceVar(myNat, "x");
+		DataInstanceVar isSupNatY = new DataInstanceVar(myNat, "y");
+		isSupNat.getFunctionCases().add(new FunctionCase(
+				new DataInstanceFunction(myBool, isSupNat),  // Res
+				new DataInstanceCons(myNat, mySucc), // TODO
+				new DataInstanceCons(myNat, mySucc) // TODO
+		));
 	}
 
 }
