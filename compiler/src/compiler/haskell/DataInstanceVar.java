@@ -4,13 +4,18 @@ public class DataInstanceVar extends DataInstance {
 
 	private String name;
 
-	public DataInstanceVar(Data dataType, String name) {
-		super(dataType);
-		this.name = name;
+	public String getName() {
+		return this.name;
 	}
 
-	public String getName() {
-		return name;
+	/**
+	 * 
+	 * @param dataType
+	 * @param name
+	 */
+	public DataInstanceVar(Data dataType, String name) {
+		// TODO - implement DataInstanceVar.DataInstanceVar
+		throw new UnsupportedOperationException();
 	}
 
 }

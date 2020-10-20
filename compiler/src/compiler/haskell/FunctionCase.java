@@ -1,25 +1,27 @@
 package compiler.haskell;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class FunctionCase {
 
-	private List<DataInstance> params;
+	private List<DataInstance> params = new ArrayList<>();
 	private DataInstance result;
 
-	public FunctionCase(DataInstance result, DataInstance... params) {
-		super();
-		this.result = result;
-		this.params = Arrays.asList(params);
-	}
-
 	public List<DataInstance> getParams() {
-		return params;
+		return this.params;
 	}
 
 	public DataInstance getResult() {
-		return result;
+		return this.result;
+	}
+
+	/**
+	 * 
+	 * @param result
+	 */
+	public FunctionCase(DataInstance result) {
+		// TODO - implement FunctionCase.FunctionCase
+		throw new UnsupportedOperationException();
 	}
 
 }

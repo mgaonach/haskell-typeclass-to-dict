@@ -1,9 +1,10 @@
 package compiler.haskell;
 
-import java.util.Collection;
+import java.util.*;
 
 public class DataParametered extends Type {
 
-	Collection<GenericType> genericTypes;
+	List<GenericType> genericTypes;
 	Data dataType;
+
 }

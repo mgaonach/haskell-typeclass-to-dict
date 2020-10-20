@@ -1,6 +1,6 @@
 package compiler.haskell;
 
-import java.util.List;
+import java.util.*;
 
 public class Program {
 
@@ -8,22 +8,27 @@ public class Program {
 	private List<Class> classes;
 	private List<Data> dataTypes;
 
-	public Program(List<Function> functions, List<Class> classes, List<Data> dataTypes) {
-		this.functions = functions;
-		this.classes = classes;
-		this.dataTypes = dataTypes;
-	}
-
 	public List<Function> getFunctions() {
-		return functions;
+		return this.functions;
 	}
 
 	public List<Class> getClasses() {
-		return classes;
+		return this.classes;
 	}
 
 	public List<Data> getDataTypes() {
-		return dataTypes;
+		return this.dataTypes;
+	}
+
+	/**
+	 * 
+	 * @param functions
+	 * @param classes
+	 * @param dataTypes
+	 */
+	public Program(List<Function> functions, List<Class> classes, List<Data> dataTypes) {
+		// TODO - implement Program.Program
+		throw new UnsupportedOperationException();
 	}
 
 }

@@ -1,9 +1,6 @@
 package compiler.haskell;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Class {
 
@@ -12,24 +9,29 @@ public class Class {
 	private List<Class> supertypes = new ArrayList<>();
 	private Map<String, FunctionType> functions = new HashMap<>();
 
-	public Class(String name) {
-		this.name = name;
-	}
-
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public List<GenericType> getGenericTypes() {
-		return genericTypes;
+		return this.genericTypes;
 	}
 
 	public List<Class> getSupertypes() {
-		return supertypes;
+		return this.supertypes;
 	}
 
 	public Map<String, FunctionType> getFunctions() {
-		return functions;
+		return this.functions;
+	}
+
+	/**
+	 * 
+	 * @param name
+	 */
+	public Class(String name) {
+		// TODO - implement Class.Class
+		throw new UnsupportedOperationException();
 	}
 
 }

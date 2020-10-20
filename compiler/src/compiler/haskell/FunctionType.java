@@ -1,18 +1,22 @@
 package compiler.haskell;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class FunctionType {
 
 	private List<Type> types;
 
-	public FunctionType(Type... types) {
-		this.types = Arrays.asList(types);
+	public List<Type> getTypes() {
+		return this.types;
 	}
 
-	public List<Type> getTypes() {
-		return types;
+	/**
+	 * 
+	 * @param types
+	 */
+	FunctionType(Type... types) {
+		// TODO - implement FunctionType.FunctionType
+		throw new UnsupportedOperationException();
 	}
 
 }

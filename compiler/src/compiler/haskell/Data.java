@@ -1,7 +1,6 @@
 package compiler.haskell;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Data extends Type {
 
@@ -10,25 +9,29 @@ public class Data extends Type {
 	private List<GenericType> genericTypes = new ArrayList<>();
 	private List<DataConstructor> dataConstructors = new ArrayList<>();
 
-	public Data(String name) {
-		super();
-		this.name = name;
-	}
-
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public List<Class> getDeriving() {
-		return deriving;
+		return this.deriving;
 	}
 
 	public List<GenericType> getGenericTypes() {
-		return genericTypes;
+		return this.genericTypes;
 	}
 
 	public List<DataConstructor> getDataConstructors() {
-		return dataConstructors;
+		return this.dataConstructors;
+	}
+
+	/**
+	 * 
+	 * @param name
+	 */
+	public Data(String name) {
+		// TODO - implement Data.Data
+		throw new UnsupportedOperationException();
 	}
 
 }

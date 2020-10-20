@@ -1,9 +1,9 @@
 package compiler.haskell;
 
-public abstract class Type {
+public class Type2 {
 
-	public Type() {
-		// TODO - implement Type.Type
+	public void Type() {
+		// TODO - implement Type2.Type
 		throw new UnsupportedOperationException();
 	}
 

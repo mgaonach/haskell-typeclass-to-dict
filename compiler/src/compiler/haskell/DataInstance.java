@@ -4,13 +4,17 @@ public class DataInstance {
 
 	private Data dataType;
 
-	public DataInstance(Data dataType) {
-		super();
-		this.dataType = dataType;
+	public Data getDataType() {
+		return this.dataType;
 	}
 
-	public Data getDataType() {
-		return dataType;
+	/**
+	 * 
+	 * @param dataType
+	 */
+	public DataInstance(Data dataType) {
+		// TODO - implement DataInstance.DataInstance
+		throw new UnsupportedOperationException();
 	}
 
 }

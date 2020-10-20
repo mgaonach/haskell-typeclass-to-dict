@@ -1,23 +1,28 @@
 package compiler.haskell;
 
-import java.util.List;
+import java.util.*;
 
 public class DataInstanceCons extends DataInstance {
 
 	private DataConstructor dataConstructor;
 	private List<DataInstance> parameters;
 
-	public DataInstanceCons(Data dataType, DataConstructor dataConstructor) {
-		super(dataType);
-		this.dataConstructor = dataConstructor;
-	}
-
 	public DataConstructor getDataConstructor() {
-		return dataConstructor;
+		return this.dataConstructor;
 	}
 
 	public List<DataInstance> getParameters() {
-		return parameters;
+		return this.parameters;
+	}
+
+	/**
+	 * 
+	 * @param dataType
+	 * @param dataConstructor
+	 */
+	public DataInstanceCons(Data dataType, DataConstructor dataConstructor) {
+		// TODO - implement DataInstanceCons.DataInstanceCons
+		throw new UnsupportedOperationException();
 	}
 
 }

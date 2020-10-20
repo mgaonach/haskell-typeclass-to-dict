@@ -1,7 +1,6 @@
 package compiler.haskell;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Function {
 
@@ -9,21 +8,26 @@ public class Function {
 	private FunctionType type;
 	private List<FunctionCase> functionCases = new ArrayList<>();
 
-	public Function(String name, FunctionType type) {
-		this.name = name;
-		this.type = type;
-	}
-
 	public String getName() {
-		return name;
-	}
-
-	public List<FunctionCase> getFunctionCases() {
-		return functionCases;
+		return this.name;
 	}
 
 	public FunctionType getType() {
-		return type;
+		return this.type;
+	}
+
+	public List<FunctionCase> getFunctionCases() {
+		return this.functionCases;
+	}
+
+	/**
+	 * 
+	 * @param name
+	 * @param type
+	 */
+	public Function(String name, FunctionType type) {
+		// TODO - implement Function.Function
+		throw new UnsupportedOperationException();
 	}
 
 }

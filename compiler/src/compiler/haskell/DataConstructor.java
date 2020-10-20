@@ -1,29 +1,27 @@
 package compiler.haskell;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class DataConstructor {
 
 	private String name;
-	private List<Type> params = new ArrayList<>();
-
-	public DataConstructor(String name) {
-		super();
-		this.name = name;
-	}
+	private List<Type> types = new ArrayList<>();
 
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
-	public List<Type> getParams() {
-		return params;
+	public List<Type> getTypes() {
+		return this.types;
 	}
 
-	public DataConstructor addParam(Type param) {
-		this.params.add(param);
-		return this;
+	/**
+	 * 
+	 * @param name
+	 */
+	public DataConstructor(String name) {
+		// TODO - implement DataConstructor.DataConstructor
+		throw new UnsupportedOperationException();
 	}
 
 }

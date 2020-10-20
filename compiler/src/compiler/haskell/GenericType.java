@@ -4,12 +4,17 @@ public class GenericType extends Type {
 
 	private String name;
 
-	public GenericType(String name) {
-		this.name = name;
+	public String getName() {
+		return this.name;
 	}
 
-	public String getName() {
-		return name;
+	/**
+	 * 
+	 * @param name
+	 */
+	public GenericType(String name) {
+		// TODO - implement GenericType.GenericType
+		throw new UnsupportedOperationException();
 	}
 
 }
