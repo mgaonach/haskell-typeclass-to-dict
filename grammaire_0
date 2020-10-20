@@ -1,0 +1,33 @@
+DataInstance := DataI Function | DI Var | DI Cons | DA Any
+
+Term := Var
+	| App Term Term
+	| Cons
+	| Any
+	| Func
+
+
+App (App  (Func "isSupBool") (Cons "Mytrue")) (Cons "MyFalse"))
+
+Type := Cons
+	 | Function Type Type
+	 | Var
+	 | App Type Type
+
+Exemple MyAnd
+// type
+Var "TypeMyAnd" = Function ( Function (Cons "MyBool") (Cons "MyBool")) (Cons "MyBool")
+// def
+FunctionDef "myAnd" TypeMyAnd
+
+
+
+// type primitif
+DataDef := Id ConsDef* Type*
+
+ConsDef := Id Type*
+
+ClassDef := Id Type Type*
+
+FunctionDef := Id Type
+
