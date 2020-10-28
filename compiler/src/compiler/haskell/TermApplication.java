@@ -5,9 +5,6 @@ public class TermApplication extends Term {
 	private Term gauche;
 	private Term droite;
 
-	public TermApplication() {
-	}
-
 	public TermApplication(Term gauche, Term droite) {
 		this.gauche = gauche;
 		this.droite = droite;
