@@ -75,6 +75,52 @@ public class ExampleProgram {
 				new TypeApplication(new TypeConstructor("MyList"), new TypeVar("a")),
 				Arrays.asList(myConsDef, myNilDef), Arrays.asList(new TypeConstructor("Show")));
 
+		/// 1st example
+
+		Type typeVar = new TypeVar("Compare");
+		Type typeParam = new TypeVar("a");
+		TypeApplication typeApp =  new TypeApplication(typeVar, typeParam);
+
+		// super types
+		List<Type> sts = new ArrayList<>();
+
+		// function Definition
+		// "isSup :: a -> a -> MyBool"
+		FunctionDefinition isSupDef = new FunctionDefinition("isSup",
+				new TypeFunction(new TypeFunction(new TypeVar("a"), new TypeVar("a")),
+						new TypeConstructor("MyBool")));
+		List<FunctionDefinition> fds = new ArrayList<>(Arrays.asList(isSupDef));
+
+		ClassDefinition cd = new ClassDefinition(typeApp, fds, sts);
+
+		// isSupBool
+		FunctionDefinition isSupBoolDef = new FunctionDefinition("isSupBool",
+				new TypeFunction(new TypeFunction(new TypeConstructor("MyBool"), new TypeConstructor("MyBool")),
+						new TypeConstructor(("MyBool"))));
+
+		new Attribution(
+				new TermApplication(
+						new TermApplication(
+								new TermFunction("isSupBool"),
+								new TermConstructor("MyTrue")
+						),
+						new TermConstructor("MyFalse")
+				),
+				new TermConstructor("MyTrue")
+		);
+
+		new Attribution(
+				new TermApplication(
+						new TermApplication(
+								new TermFunction("isSupBool"),
+								new TermAny()
+						),
+						new TermAny()
+				),
+				new TermConstructor("MyFalse")
+		);
+
+		// TODO isSupNat
 	}
 
 }
