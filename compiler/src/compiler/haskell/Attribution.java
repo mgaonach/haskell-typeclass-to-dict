@@ -4,11 +4,20 @@ import java.util.*;
 
 public class Attribution {
 
-	List<Term> terms;
+	private Term left;
+	private Term right;
 
-	public Attribution() {
-		// TODO - implement Attribution.Attribution
-		throw new UnsupportedOperationException();
+	public Attribution(Term left, Term right) {
+		this.left = left;
+		this.right = right;
+	}
+
+	public Term getLeft() {
+		return left;
+	}
+
+	public Term getRight() {
+		return right;
 	}
 
 }
