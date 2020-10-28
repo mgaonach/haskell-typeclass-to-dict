@@ -2,12 +2,22 @@ package compiler.haskell;
 
 public class TermApplication extends Term {
 
-	Term gauche;
-	Term droite;
+	private Term gauche;
+	private Term droite;
 
 	public TermApplication() {
-		// TODO - implement TermApplication.TermApplication
-		throw new UnsupportedOperationException();
 	}
 
+	public TermApplication(Term gauche, Term droite) {
+		this.gauche = gauche;
+		this.droite = droite;
+	}
+
+	public Term getGauche() {
+		return gauche;
+	}
+
+	public Term getDroite() {
+		return droite;
+	}
 }

@@ -2,12 +2,19 @@ package compiler.haskell;
 
 public class TypeApplication extends Type {
 
-	Type gauche;
-	Type droite;
+	private Type gauche;
+	private Type droite;
 
-	public TypeApplication() {
-		// TODO - implement TypeApplication.TypeApplication
-		throw new UnsupportedOperationException();
+	public TypeApplication(Type gauche, Type droite) {
+		this.gauche = gauche;
+		this.droite = droite;
 	}
 
+	public Type getGauche() {
+		return gauche;
+	}
+
+	public Type getDroite() {
+		return droite;
+	}
 }

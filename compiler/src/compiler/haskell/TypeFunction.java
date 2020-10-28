@@ -2,12 +2,19 @@ package compiler.haskell;
 
 public class TypeFunction extends Type {
 
-	Type gauche;
-	Type droite;
+	private Type gauche;
+	private Type droite;
 
-	public TypeFunction() {
-		// TODO - implement TypeFunction.TypeFunction
-		throw new UnsupportedOperationException();
+	public TypeFunction(Type gauche, Type droite) {
+		this.gauche = gauche;
+		this.droite = droite;
 	}
 
+	public Type getGauche() {
+		return gauche;
+	}
+
+	public Type getDroite() {
+		return droite;
+	}
 }

@@ -9,8 +9,10 @@ public class FunctionDefinition {
 	 * @param id
 	 */
 	public FunctionDefinition(String id) {
-		// TODO - implement FunctionDefinition.FunctionDefinition
-		throw new UnsupportedOperationException();
+		Id = id;
 	}
 
+	public String getId() {
+		return Id;
+	}
 }
