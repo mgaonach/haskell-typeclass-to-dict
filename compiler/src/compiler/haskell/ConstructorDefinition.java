@@ -4,16 +4,20 @@ import java.util.*;
 
 public class ConstructorDefinition {
 
-	List<Type> types;
-	private String Id;
+	private List<Type> params;
+	private String id;
 
-	/**
-	 * 
-	 * @param id
-	 */
-	public ConstructorDefinition(String id) {
-		// TODO - implement ConstructorDefinition.ConstructorDefinition
-		throw new UnsupportedOperationException();
+	public ConstructorDefinition(List<Type> params, String id) {
+		this.params = params;
+		this.id = id;
+	}
+
+	public List<Type> getParams() {
+		return params;
+	}
+
+	public String getId() {
+		return id;
 	}
 
 }
