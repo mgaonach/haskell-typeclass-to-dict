@@ -2,7 +2,14 @@ package compiler.haskell;
 
 public class TermFunction extends Term {
 
-	public TermFunction() {
+	private String id;
+
+	public TermFunction(String id) {
+		this.id = id;
+	}
+
+	public String getId() {
+		return id;
 	}
 
 }

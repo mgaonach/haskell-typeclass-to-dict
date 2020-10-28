@@ -1,23 +1,21 @@
 package compiler.haskell;
 
-import java.util.*;
-
 public class Attribution {
 
-	private Term left;
-	private Term right;
+	private Term gauche;
+	private Term droite;
 
-	public Attribution(Term left, Term right) {
-		this.left = left;
-		this.right = right;
+	public Attribution(Term gauche, Term droite) {
+		this.gauche = gauche;
+		this.droite = droite;
 	}
 
 	public Term getLeft() {
-		return left;
+		return gauche;
 	}
 
 	public Term getRight() {
-		return right;
+		return droite;
 	}
 
 }

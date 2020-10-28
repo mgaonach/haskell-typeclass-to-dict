@@ -2,19 +2,20 @@ package compiler.haskell;
 
 public class TypeConstraint extends Type {
 
-	private TypeApplication application;
-	private Type type;
+	private TypeApplication gauche;
+	private TypeApplication droite;
 
-	public TypeConstraint(TypeApplication application, Type type) {
-		this.application = application;
-		this.type = type;
+	public TypeConstraint(TypeApplication gauche, TypeApplication droite) {
+		this.gauche = gauche;
+		this.droite = droite;
 	}
 
-	public TypeApplication getApplication() {
-		return application;
+	public TypeApplication getGauche() {
+		return gauche;
 	}
 
-	public Type getType() {
-		return type;
+	public TypeApplication getDroite() {
+		return droite;
 	}
+
 }

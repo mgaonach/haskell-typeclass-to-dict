@@ -2,9 +2,14 @@ package compiler.haskell;
 
 public class TypeVar extends Type {
 
-	public TypeVar() {
+	private String id;
+
+	public TypeVar(String id) {
+		this.id = id;
 	}
 
-
+	public String getId() {
+		return id;
+	}
 
 }

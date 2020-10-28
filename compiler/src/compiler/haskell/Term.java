@@ -1,6 +1,6 @@
 package compiler.haskell;
 
-public class Term {
+public abstract class Term {
 
 	public Term() {
 	}

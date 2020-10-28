@@ -2,7 +2,14 @@ package compiler.haskell;
 
 public class TermConstructor extends Term {
 
-	public TermConstructor() {
+	private String id;
+
+	public TermConstructor(String id) {
+		this.id = id;
+	}
+
+	public String getId() {
+		return id;
 	}
 
 }

@@ -2,17 +2,13 @@ package compiler.haskell;
 
 public class FunctionDefinition {
 
-	private String Id;
+	private String id;
 
-	/**
-	 * 
-	 * @param id
-	 */
 	public FunctionDefinition(String id) {
-		Id = id;
+		this.id = id;
 	}
 
 	public String getId() {
-		return Id;
+		return id;
 	}
 }
