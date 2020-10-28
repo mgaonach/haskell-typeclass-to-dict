@@ -3,19 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="495dabba-2e62-407a-8737-78b0101c8a8e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/haskell/FunctionDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/haskell/FunctionDefinition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/haskell/Term.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/haskell/Term.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/haskell/TermAny.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/haskell/TermAny.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/haskell/TermApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/haskell/TermApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/haskell/TermConstructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/haskell/TermConstructor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/haskell/TermFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/haskell/TermFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/haskell/TermVar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/haskell/TermVar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/haskell/Type.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/haskell/Type.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/haskell/TypeApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/haskell/TypeApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/haskell/TypeConstraint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/haskell/TypeConstraint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/haskell/TypeConstructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/haskell/TypeConstructor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/haskell/TypeFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/haskell/TypeFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/haskell/TypeVar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/haskell/TypeVar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/ExampleProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ExampleProgram.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +52,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603879414734">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1603879414734" />
     <state x="533" y="141" key="#com.intellij.ide.util.MemberChooser" timestamp="1603877218004">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
