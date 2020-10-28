@@ -1,5 +1,3 @@
-DataInstance := DataI Function | DI Var | DI Cons | DA Any
-
 Term := Var
 	| App Term Term
 	| Cons
@@ -11,6 +9,7 @@ App (App  (Func "isSupBool") (Cons "Mytrue")) (Cons "MyFalse"))
 
 Type := Cons
 	 | Function Type Type
+	 | Constraint Type(only App) Type
 	 | Var
 	 | App Type Type
 
@@ -20,14 +19,17 @@ Var "TypeMyAnd" = Function ( Function (Cons "MyBool") (Cons "MyBool")) (Cons "My
 // def
 FunctionDef "myAnd" TypeMyAnd
 
+// attribution
+Attribution := Term Term
 
+Instance := Type(only App) Attribution*
 
 // type primitif
-DataDef := Id ConsDef* Type*
+DataDef := Type ConsDef* Type*
 
 ConsDef := Id Type*
 
-ClassDef := Id Type Type*
+ClassDef := Type FunctionDef* Type*
 
 FunctionDef := Id Type
 
