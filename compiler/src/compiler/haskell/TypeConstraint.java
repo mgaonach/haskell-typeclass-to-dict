@@ -3,9 +3,9 @@ package compiler.haskell;
 public class TypeConstraint extends Type {
 
 	private TypeApplication gauche;
-	private TypeApplication droite;
+	private Type droite;
 
-	public TypeConstraint(TypeApplication gauche, TypeApplication droite) {
+	public TypeConstraint(TypeApplication gauche, Type droite) {
 		this.gauche = gauche;
 		this.droite = droite;
 	}
@@ -14,7 +14,7 @@ public class TypeConstraint extends Type {
 		return gauche;
 	}
 
-	public TypeApplication getDroite() {
+	public Type getDroite() {
 		return droite;
 	}
 

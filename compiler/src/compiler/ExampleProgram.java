@@ -1,11 +1,13 @@
 package compiler;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 import compiler.haskell.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 public class ExampleProgram {
 
@@ -79,7 +81,7 @@ public class ExampleProgram {
 
 		Type typeVar = new TypeVar("Compare");
 		Type typeParam = new TypeVar("a");
-		TypeApplication typeApp =  new TypeApplication(typeVar, typeParam);
+		TypeApplication typeApp = new TypeApplication(typeVar, typeParam);
 
 		// super types
 		List<Type> sts = new ArrayList<>();
@@ -87,8 +89,7 @@ public class ExampleProgram {
 		// function Definition
 		// "isSup :: a -> a -> MyBool"
 		FunctionDefinition isSupDef = new FunctionDefinition("isSup",
-				new TypeFunction(new TypeFunction(new TypeVar("a"), new TypeVar("a")),
-						new TypeConstructor("MyBool")));
+				new TypeFunction(new TypeFunction(new TypeVar("a"), new TypeVar("a")), new TypeConstructor("MyBool")));
 		List<FunctionDefinition> fds = new ArrayList<>(Arrays.asList(isSupDef));
 
 		ClassDefinition cd = new ClassDefinition(typeApp, fds, sts);
@@ -99,28 +100,109 @@ public class ExampleProgram {
 						new TypeConstructor(("MyBool"))));
 
 		new Attribution(
-				new TermApplication(
-						new TermApplication(
-								new TermFunction("isSupBool"),
-								new TermConstructor("MyTrue")
-						),
-						new TermConstructor("MyFalse")
-				),
-				new TermConstructor("MyTrue")
-		);
+				new TermApplication(new TermApplication(new TermFunction("isSupBool"), new TermConstructor("MyTrue")),
+						new TermConstructor("MyFalse")),
+				new TermConstructor("MyTrue"));
 
 		new Attribution(
-				new TermApplication(
-						new TermApplication(
-								new TermFunction("isSupBool"),
-								new TermAny()
-						),
-						new TermAny()
-				),
-				new TermConstructor("MyFalse")
-		);
+				new TermApplication(new TermApplication(new TermFunction("isSupBool"), new TermAny()), new TermAny()),
+				new TermConstructor("MyFalse"));
 
 		// TODO isSupNat
+	}
+
+	public static void getAST3() {
+
+		TypeConstraint parity2Type = new TypeConstraint(//
+				new TypeApplication(new TypeVar("Compare"), new TypeVar("a")), //
+				new TypeApplication(new TypeVar("Parity2"), new TypeVar("a"))//
+		);
+
+		FunctionDefinition isOdd2Def = new FunctionDefinition("isOdd2",
+				new TypeFunction(new TypeVar("a"), new TypeConstructor("MyBool")));
+		FunctionDefinition isEven2Def = new FunctionDefinition("isEven2",
+				new TypeFunction(new TypeVar("a"), new TypeConstructor("MyBool")));
+
+		ClassDefinition parity2Def = new ClassDefinition(parity2Type, Arrays.asList(isOdd2Def, isEven2Def),
+				Collections.emptyList());
+
+		Instance iParity2MyBool = new Instance(//
+				new TypeApplication(new TypeConstructor("Parity2"), new TypeConstructor("myBool")), //
+				new Attribution(new TermConstructor("isOdd2"), new TermConstructor("isOddBool")), //
+				new Attribution(new TermConstructor("isEven2"), new TermConstructor("isEvenBool"))//
+		);
+
+		Instance iParity2MyNat = new Instance(//
+				new TypeApplication(new TypeConstructor("Parity2"), new TypeConstructor("MyNat")), //
+				new Attribution(new TermConstructor("isOdd2"), new TermConstructor("isOddNat")), //
+				new Attribution(new TermConstructor("isEven2"), new TermConstructor("isEvenNat"))//
+		);
+
+		FunctionDefinition allEvenAreSupDef = new FunctionDefinition("allEvenAreSup", //
+				new TypeConstraint(//
+						new TypeApplication(//
+								new TypeConstructor("Parity2"), //
+								new TypeVar("a")//
+						), //
+						new TypeFunction(//
+								new TypeFunction(//
+										new TypeApplication(//
+												new TypeConstructor("MyList"), //
+												new TypeVar("a")//
+										)//
+										, new TypeVar("a")//
+								), //
+								new TypeConstructor("MyBool")//
+						)//
+				)//
+		);
+
+		new Attribution(new TermApplication(
+				new TermApplication(new TermConstructor("allEvenAreSup"), new TermConstructor("MyNil")),
+				new TermVar("n")), new TermConstructor("MyTrue"));
+
+		new Attribution(//
+				new TermApplication(//
+						new TermApplication(//
+								new TermConstructor("allEvenAreSup"), //
+								new TermApplication(//
+										new TermApplication(//
+												new TermConstructor("MyCons"), //
+												new TermVar("x")//
+										), //
+										new TermVar("l")//
+								)//
+						), //
+						new TermVar("n")//
+				), //
+				new TermApplication(//
+						new TermApplication(//
+								new TermConstructor("myAnd"), //
+								new TermApplication(//
+										new TermApplication(//
+												new TermConstructor("allEvenAreSup"), //
+												new TermVar("l")//
+										), //
+										new TermVar("n")//
+								)), //
+						new TermApplication(//
+								new TermApplication(//
+										new TermConstructor("myOr"), //
+										new TermApplication(//
+												new TermConstructor("idOdd2"), //
+												new TermVar("x")//
+										)//
+								), //
+								new TermApplication(//
+										new TermApplication(//
+												new TermConstructor("isSup"), //
+												new TermVar("x")//
+										), //
+										new TermVar("n")//
+								)//
+						)//
+				)//
+		);
 	}
 
 }
