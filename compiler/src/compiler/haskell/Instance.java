@@ -1,23 +1,17 @@
 package compiler.haskell;
 
+import java.util.Arrays;
 import java.util.List;
 
+//Instance := Type(only App) Attribution*
 public class Instance {
 
-    private TypeApplication type;
-    private List<Attribution> functions;
+    private TypeApplication instanceType;
+    private List<Attribution> attributions;
 
-    public Instance(TypeApplication type, List<Attribution> functions) {
-        this.type = type;
-        this.functions = functions;
-    }
-
-    public TypeApplication getType() {
-        return type;
-    }
-
-    public List<Attribution> getFunctions() {
-        return functions;
+    public Instance(TypeApplication instanceType, Attribution... attributions) {
+        this.instanceType = instanceType;
+        this.attributions = Arrays.asList(attributions);
     }
 
 }
