@@ -11,7 +11,7 @@ import java.util.function.Function;
 
 public class ExampleProgram {
 
-	public static void getAST() {
+	public static Program getAST() {
 		
 		Program program = new Program("examples");
 		
@@ -600,6 +600,8 @@ public class ExampleProgram {
 						)//
 				)//
 		));
+		
+		return program;
 	}
 
 }
