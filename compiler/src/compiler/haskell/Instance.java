@@ -26,7 +26,7 @@ public class Instance implements Instruction{
     @Override
     public String toHaskell() {
         StringBuilder sb = new StringBuilder("instance " + this.getInstanceType().toHaskell());
-        StringJoiner sj = new StringJoiner("\n", " where\n", "");
+        StringJoiner sj = new StringJoiner("\n\t", " where\n\t", "\n");
         for (Attribution a : this.getAttributions()){
             sj.add(a.toHaskell());
         }

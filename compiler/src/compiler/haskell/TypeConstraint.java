@@ -20,6 +20,6 @@ public class TypeConstraint extends Type {
 
 	@Override
 	public String toHaskell() {
-		return "Consraint? " + this.getGauche().toHaskell() + " " + this.getDroite().toHaskell();
+		return this.getGauche().toHaskell() + " => " + this.getDroite().toHaskell();
 	}
 }

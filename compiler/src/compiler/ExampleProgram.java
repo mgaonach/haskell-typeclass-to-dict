@@ -14,10 +14,12 @@ public class ExampleProgram {
 	public static Program getAST() {
 		
 		Program program = new Program("examples");
-		
+
+		Comment comPrimTypeDef = new Comment("Primitive types definitions");
+		program.add(comPrimTypeDef);
 		
 		ConstructorDefinition myZeroDef = new ConstructorDefinition("MyZero");
-		ConstructorDefinition mySuccDef = new ConstructorDefinition("MySucc", new TypeConstructor("myNat"));
+		ConstructorDefinition mySuccDef = new ConstructorDefinition("MySucc", new TypeConstructor("MyNat"));
 		DataDefinition myNatDef = new DataDefinition(new TypeConstructor("MyNat"), Arrays.asList(myZeroDef, mySuccDef),
 				Arrays.asList(new TypeConstructor("Show")));
 		
@@ -88,7 +90,11 @@ public class ExampleProgram {
 				new TypeApplication(new TypeConstructor("MyList"), new TypeVar("a")),
 				Arrays.asList(myConsDef, myNilDef), Arrays.asList(new TypeConstructor("Show")));
 		program.add(myListDef);
+
+
 		/// 1st example
+		Comment com1stEx = new Comment("First example : type class with one method");
+		program.add(com1stEx);
 
 		Type typeVar = new TypeVar("Compare");
 		Type typeParam = new TypeVar("a");
@@ -272,6 +278,9 @@ public class ExampleProgram {
 		));
 
 		/// 2nd example
+		Comment com2ndEx = new Comment("Second example : second class with two methods");
+		program.add(com2ndEx);
+
 		Type typeVar2 = new TypeConstructor("Parity");
 		Type typeParam2 = new TypeVar("a");
 		TypeApplication typeApp2 =  new TypeApplication(typeVar2, typeParam2);
@@ -291,7 +300,7 @@ public class ExampleProgram {
 		);
 
 		List<FunctionDefinition> fds2 = new ArrayList<>(Arrays.asList(isOddDef, isEvenDef));
-		
+
 		ClassDefinition cd2 = new ClassDefinition(typeApp2, fds2, sts2);
 		program.add(cd2);
 
@@ -459,9 +468,9 @@ public class ExampleProgram {
 		// areAllEven
 		FunctionDefinition areAllEvenDef = new FunctionDefinition("areAllEven",
 				new TypeFunction(
-						new TypeFunction(
+						new TypeConstraint(
 								new TypeApplication(
-										new TypeVar("Compare"),
+										new TypeVar("Parity"),
 										new TypeVar("a")
 								),
 								new TypeApplication(
@@ -507,6 +516,10 @@ public class ExampleProgram {
 		));
 
 		//Exemple 3
+
+		Comment com3rdEx = new Comment("Third example : subclasses");
+		program.add(com3rdEx);
+
 		TypeConstraint parity2Type = new TypeConstraint(//
 				new TypeApplication(new TypeVar("Compare"), new TypeVar("a")), //
 				new TypeApplication(new TypeVar("Parity2"), new TypeVar("a"))//

@@ -20,6 +20,6 @@ public class TermApplication extends Term {
 
 	@Override
 	public String toHaskell() {
-		return "(" + this.getGauche().toHaskell() + " " + this.getDroite().toHaskell() + ")";
+		return this.getGauche().toHaskell() + " (" + this.getDroite().toHaskell() + ")";
 	}
 }

@@ -29,7 +29,7 @@ public class ConstructorDefinition implements Instruction{
 	@Override
 	public String toHaskell() {
 		StringBuilder sb = new StringBuilder(this.getId());
-		StringJoiner sj = new StringJoiner(" ");
+		StringJoiner sj = new StringJoiner(" ", " ", "");
 		for(Type t : this.getParams()){
 			sj.add(t.toHaskell());
 		}

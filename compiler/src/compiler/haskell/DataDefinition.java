@@ -29,15 +29,15 @@ public class DataDefinition implements Instruction {
 
 	@Override
 	public String toHaskell() {
-		StringBuilder sb = new StringBuilder("data " + this.getType().toHaskell() + " = ");
+		StringBuilder sb = new StringBuilder("\ndata " + this.getType().toHaskell() + " = ");
 		// constructor definitions
-		StringJoiner sjConsDef = new StringJoiner("\n|");
+		StringJoiner sjConsDef = new StringJoiner("\n\t\t| ", "", "");
 		for (ConstructorDefinition cd : this.getConstructorDefinitions()) {
 			sjConsDef.add(cd.toHaskell());
 		}
 		sb.append(sjConsDef);
 		// super types
-		StringJoiner sjSuperTypes = new StringJoiner(", ", "deriving ", "");
+		StringJoiner sjSuperTypes = new StringJoiner(", ", " deriving ", "");
 		for (Type t : this.getSuperTypes()) {
 			sjSuperTypes.add(t.toHaskell());
 		}
