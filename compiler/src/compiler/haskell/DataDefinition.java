@@ -2,7 +2,7 @@ package compiler.haskell;
 
 import java.util.List;
 
-public class DataDefinition {
+public class DataDefinition implements Instruction{
 
 	private Type type;
 	private List<ConstructorDefinition> constructorDefinitions;

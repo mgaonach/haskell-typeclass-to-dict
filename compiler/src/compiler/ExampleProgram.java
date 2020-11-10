@@ -12,20 +12,29 @@ import java.util.function.Function;
 public class ExampleProgram {
 
 	public static void getAST() {
+		
+		Program program = new Program("examples");
+		
+		
 		ConstructorDefinition myZeroDef = new ConstructorDefinition("MyZero");
 		ConstructorDefinition mySuccDef = new ConstructorDefinition("MySucc", new TypeConstructor("myNat"));
 		DataDefinition myNatDef = new DataDefinition(new TypeConstructor("MyNat"), Arrays.asList(myZeroDef, mySuccDef),
 				Arrays.asList(new TypeConstructor("Show")));
+		
+		program.add(myNatDef);
 
 		ConstructorDefinition myTrueDef = new ConstructorDefinition("MyTrue");
 		ConstructorDefinition myFalseDef = new ConstructorDefinition("MyFalse");
 		DataDefinition myBoolDef = new DataDefinition(new TypeConstructor("MyBool"),
 				Arrays.asList(myTrueDef, myFalseDef), Arrays.asList(new TypeConstructor("Show")));
-
+		program.add(myBoolDef);
+		
 		FunctionDefinition myAndDef = new FunctionDefinition("myAnd",
 				new TypeFunction(new TypeFunction(new TypeConstructor("myBool"), new TypeConstructor("myBool")),
 						new TypeConstructor("myBool")));
-		new Attribution(//
+		program.add(myAndDef);
+		
+		program.add(new Attribution(//
 				new TermApplication(//
 						new TermApplication(//
 								new TermFunction("myAnd"), //
@@ -34,8 +43,8 @@ public class ExampleProgram {
 						new TermConstructor("myFalse")//
 				), //
 				new TermConstructor("MyTrue")//
-		);
-		new Attribution(//
+		));
+		program.add(new Attribution(//
 				new TermApplication(//
 						new TermApplication(//
 								new TermFunction("myAnd"), //
@@ -44,12 +53,14 @@ public class ExampleProgram {
 						new TermAny()//
 				), //
 				new TermConstructor("MyFalse")//
-		);
+		));
 
 		FunctionDefinition myOrDef = new FunctionDefinition("myOr",
 				new TypeFunction(new TypeFunction(new TypeConstructor("myBool"), new TypeConstructor("myBool")),
 						new TypeConstructor("myBool")));
-		new Attribution(//
+		program.add(myOrDef);
+		
+		program.add(new Attribution(//
 				new TermApplication(//
 						new TermApplication(//
 								new TermFunction("myOr"), //
@@ -58,8 +69,8 @@ public class ExampleProgram {
 						new TermAny()//
 				), //
 				new TermConstructor("MyTrue")//
-		);
-		new Attribution(//
+		));
+		program.add(new Attribution(//
 				new TermApplication(//
 						new TermApplication(//
 								new TermFunction("myOr"), //
@@ -68,7 +79,7 @@ public class ExampleProgram {
 						new TermVar("b")//
 				), //
 				new TermVar("b")//
-		);
+		));
 
 		ConstructorDefinition myConsDef = new ConstructorDefinition("MyCons", new TypeVar("a"),
 				new TypeApplication(new TypeConstructor("MyList"), new TypeVar("a")));
@@ -76,7 +87,7 @@ public class ExampleProgram {
 		DataDefinition myListDef = new DataDefinition(
 				new TypeApplication(new TypeConstructor("MyList"), new TypeVar("a")),
 				Arrays.asList(myConsDef, myNilDef), Arrays.asList(new TypeConstructor("Show")));
-
+		program.add(myListDef);
 		/// 1st example
 
 		Type typeVar = new TypeVar("Compare");
@@ -93,27 +104,30 @@ public class ExampleProgram {
 		List<FunctionDefinition> fds = new ArrayList<>(Arrays.asList(isSupDef));
 
 		ClassDefinition cd = new ClassDefinition(typeApp, fds, sts);
+		program.add(cd);
 
 		// isSupBool
 		FunctionDefinition isSupBoolDef = new FunctionDefinition("isSupBool",
 				new TypeFunction(new TypeFunction(new TypeConstructor("MyBool"), new TypeConstructor("MyBool")),
 						new TypeConstructor(("MyBool"))));
-
-		new Attribution(
+		program.add(isSupBoolDef);
+		
+		program.add(new Attribution(
 				new TermApplication(new TermApplication(new TermFunction("isSupBool"), new TermConstructor("MyTrue")),
 						new TermConstructor("MyFalse")),
-				new TermConstructor("MyTrue"));
+				new TermConstructor("MyTrue")));
 
-		new Attribution(
+		program.add(new Attribution(
 				new TermApplication(new TermApplication(new TermFunction("isSupBool"), new TermAny()), new TermAny()),
-				new TermConstructor("MyFalse"));
+				new TermConstructor("MyFalse")));
 
 		// isSupNat
 		FunctionDefinition isSupNatDef = new FunctionDefinition("isSupNat",
 				new TypeFunction(new TypeFunction(new TypeConstructor("MyNat"), new TypeConstructor("MyNat")),
 						new TypeConstructor("MyBool")));
+		program.add(isSupNatDef);
 
-		new Attribution(
+		program.add(new Attribution(
 				new TermApplication(
 						new TermApplication(
 								new TermFunction("isSupNat"),
@@ -135,9 +149,9 @@ public class ExampleProgram {
 						),
 						new TermVar("y")
 				)
-		);
+		));
 
-		new Attribution(
+		program.add(new Attribution(
 				new TermApplication(
 						new TermApplication(
 								new TermFunction("isSupNat"),
@@ -152,9 +166,9 @@ public class ExampleProgram {
 				new TermConstructor("MyTrue")
 
 
-		);
+		));
 
-		new Attribution(
+		program.add(new Attribution(
 				new TermApplication(
 						new TermApplication(
 								new TermFunction("isSupNat"),
@@ -163,7 +177,7 @@ public class ExampleProgram {
 						new TermAny()
 				),
 				new TermConstructor("MyFalse")
-		);
+		));
 
 		// instance Compare MyBool and Compare MyNat
 		Instance compareMyBool = new Instance(
@@ -171,22 +185,24 @@ public class ExampleProgram {
 						new TypeVar("Compare"),
 						new TypeConstructor("MyBool")
 				),
-				Arrays.asList(new Attribution(
+				new Attribution(
 						new TermFunction("isSup"),
 						new TermFunction("isSupBool")
-				))
+				)
 		);
+		program.add(compareMyBool);
 
 		Instance compareMyNat = new Instance(
 				new TypeApplication(
 						new TypeVar("Compare"),
 						new TypeConstructor("MyNat")
 				),
-				Arrays.asList(new Attribution(
+				new Attribution(
 						new TermFunction("isSup"),
 						new TermFunction("isSupNat")
-				))
+				)
 		);
+		program.add(compareMyNat);
 
 		// areAllSup
 		FunctionDefinition areAllSupDef = new FunctionDefinition("areAllSup",
@@ -207,8 +223,9 @@ public class ExampleProgram {
 						new TypeConstructor("MyBool")
 				)
 		);
+		program.add(areAllSupDef);
 
-		new Attribution(
+		program.add(new Attribution(
 				new TermApplication(
 						new TermFunction("areAllSup"),
 						new TermApplication(
@@ -217,9 +234,9 @@ public class ExampleProgram {
 						)
 				),
 				new TermConstructor("MyTrue")
-		);
+		));
 
-		new Attribution(
+		program.add(new Attribution(
 				new TermApplication(
 						new TermFunction("areAllSup"),
 						new TermApplication(
@@ -252,12 +269,12 @@ public class ExampleProgram {
 								)
 						)
 				)
-		);
+		));
 
 		/// 2nd example
-		Type typeVar2 = new TypeVar("Parity");
+		Type typeVar2 = new TypeConstructor("Parity");
 		Type typeParam2 = new TypeVar("a");
-		TypeApplication typeApp2 =  new TypeApplication(typeVar, typeParam);
+		TypeApplication typeApp2 =  new TypeApplication(typeVar2, typeParam2);
 
 		// super types
 		List<Type> sts2 = new ArrayList<>();
@@ -274,6 +291,8 @@ public class ExampleProgram {
 		);
 
 		List<FunctionDefinition> fds2 = new ArrayList<>(Arrays.asList(isOddDef, isEvenDef));
+		
+		// TODO : il manque la classe "Parity a", puis l'ajouter dans program
 
 		// isOddBool
 		FunctionDefinition isOddBoolDef = new FunctionDefinition("isOddBool",
@@ -282,13 +301,15 @@ public class ExampleProgram {
 						new TypeConstructor("MyBool")
 				)
 		);
-		new Attribution(
+		program.add(isOddBoolDef);
+		
+		program.add(new Attribution(
 				new TermApplication(
 						new TermFunction("isOddBool"),
 						new TermVar("b")
 				),
 				new TermVar("b")
-		);
+		));
 
 		// isEvenBool
 		FunctionDefinition isEvenBoolDef = new FunctionDefinition("isEvenBool",
@@ -297,20 +318,21 @@ public class ExampleProgram {
 						new TypeConstructor("MyBool")
 				)
 		);
-		new Attribution(
+		program.add(isEvenBoolDef);
+		program.add(new Attribution(
 				new TermApplication(
 						new TermFunction("isEvenBool"),
 						new TermConstructor("MyTrue")
 				),
 				new TermConstructor("MyFalse")
-		);
-		new Attribution(
+		));
+		program.add(new Attribution(
 				new TermApplication(
 						new TermFunction("isEvenBool"),
 						new TermConstructor("MyFalse")
 				),
 				new TermConstructor("MyTrue")
-		);
+		));
 
 		// isOddNat
 		FunctionDefinition isOddNatDef = new FunctionDefinition("isOddNat",
@@ -319,14 +341,15 @@ public class ExampleProgram {
 						new TypeConstructor("MyFalse")
 				)
 		);
-		new  Attribution(
+		program.add(isOddNatDef);
+		program.add(new  Attribution(
 				new TermApplication(
 						new TermFunction("isOddNat"),
 						new TermConstructor("MyZero")
 				),
 				new TermConstructor("MyFalse")
-		);
-		new Attribution(
+		));
+		program.add(new Attribution(
 				new TermApplication(
 						new TermFunction("isOddNat"),
 						new TermApplication(
@@ -335,8 +358,8 @@ public class ExampleProgram {
 						)
 				),
 				new TermConstructor("MyTrue")
-		);
-		new Attribution(
+		));
+		program.add(new Attribution(
 				new TermApplication(
 						new TermFunction("isOddNat"),
 						new TermApplication(
@@ -351,7 +374,7 @@ public class ExampleProgram {
 						new TermConstructor("isOddNat"),
 						new TermVar("n")
 				)
-		);
+		));
 
 		// isEvenNat
 		FunctionDefinition isEvenNatDef = new FunctionDefinition("isEvenNat",
@@ -360,14 +383,16 @@ public class ExampleProgram {
 						new TypeConstructor("MyBool")
 				)
 		);
-		new Attribution(
+		program.add(isEvenNatDef);
+		
+		program.add(new Attribution(
 				new TermApplication(
 						new TermFunction("isEvenNat"),
 						new TermConstructor("MyZero")
 				),
 				new TermConstructor("MyTrue")
-		);
-		new Attribution(
+		));
+		program.add(new Attribution(
 				new TermApplication(
 						new TermFunction("isEvenNat"),
 						new TermApplication(
@@ -376,8 +401,8 @@ public class ExampleProgram {
 						)
 				),
 				new TermConstructor("MyFalse")
-		);
-		new Attribution(
+		));
+		program.add(new Attribution(
 				new TermApplication(
 						new TermFunction("isEvenNat"),
 						new TermApplication(
@@ -392,7 +417,7 @@ public class ExampleProgram {
 						new TermFunction("isEvenNat"),
 						new TermVar("n")
 				)
-		);
+		));
 
 		// instance Parity MyBool and Parity MyNat
 		Instance parityMyBool = new Instance(
@@ -400,7 +425,7 @@ public class ExampleProgram {
 						new TypeVar("Parity"),
 						new TypeConstructor("MyBool")
 				),
-				Arrays.asList(
+				
 						new Attribution(
 								new TermFunction("isOdd"),
 								new TermFunction("isOddBool")
@@ -409,14 +434,15 @@ public class ExampleProgram {
 								new TermFunction("isEven"),
 								new TermFunction("isEvenBool")
 						)
-				)
+				
 		);
-		Instance parityMyNa = new Instance(
+		program.add(parityMyBool);
+		Instance parityMyNat = new Instance(
 				new TypeApplication(
 						new TypeVar("Parity"),
 						new TypeConstructor("MyNat")
 				),
-				Arrays.asList(
+				
 						new Attribution(
 								new TermFunction("isOdd"),
 								new TermFunction("isOddNat")
@@ -425,8 +451,9 @@ public class ExampleProgram {
 								new TermFunction("isEven"),
 								new TermFunction("isEvenNat")
 						)
-				)
+				
 		);
+		program.add(parityMyNat);
 
 		// areAllEven
 		FunctionDefinition areAllEvenDef = new FunctionDefinition("areAllEven",
@@ -444,14 +471,15 @@ public class ExampleProgram {
 						new TypeConstructor("MyBool")
 				)
 		);
-		new Attribution(
+		program.add(areAllEvenDef);
+		program.add(new Attribution(
 				new TermApplication(
 						new TermFunction("areAllEven"),
 						new TermConstructor("MyNil")
 				),
 				new TermConstructor("MyTrue")
-		);
-		new Attribution(
+		));
+		program.add(new Attribution(
 				new TermApplication(
 						new TermFunction("areAllEven"),
 						new TermApplication(
@@ -475,12 +503,9 @@ public class ExampleProgram {
 								)
 						)
 				)
-		);
+		));
 
-	}
-
-	public static void getAST3() {
-
+		//Exemple 3
 		TypeConstraint parity2Type = new TypeConstraint(//
 				new TypeApplication(new TypeVar("Compare"), new TypeVar("a")), //
 				new TypeApplication(new TypeVar("Parity2"), new TypeVar("a"))//
@@ -493,18 +518,21 @@ public class ExampleProgram {
 
 		ClassDefinition parity2Def = new ClassDefinition(parity2Type, Arrays.asList(isOdd2Def, isEven2Def),
 				Collections.emptyList());
+		program.add(parity2Def);
 
 		Instance iParity2MyBool = new Instance(//
 				new TypeApplication(new TypeConstructor("Parity2"), new TypeConstructor("myBool")), //
 				new Attribution(new TermConstructor("isOdd2"), new TermConstructor("isOddBool")), //
 				new Attribution(new TermConstructor("isEven2"), new TermConstructor("isEvenBool"))//
 		);
+		program.add(iParity2MyBool);
 
 		Instance iParity2MyNat = new Instance(//
 				new TypeApplication(new TypeConstructor("Parity2"), new TypeConstructor("MyNat")), //
 				new Attribution(new TermConstructor("isOdd2"), new TermConstructor("isOddNat")), //
 				new Attribution(new TermConstructor("isEven2"), new TermConstructor("isEvenNat"))//
 		);
+		program.add(iParity2MyNat);
 
 		FunctionDefinition allEvenAreSupDef = new FunctionDefinition("allEvenAreSup", //
 				new TypeConstraint(//
@@ -524,12 +552,13 @@ public class ExampleProgram {
 						)//
 				)//
 		);
+		program.add(allEvenAreSupDef);
 
-		new Attribution(new TermApplication(
+		program.add(new Attribution(new TermApplication(
 				new TermApplication(new TermConstructor("allEvenAreSup"), new TermConstructor("MyNil")),
-				new TermVar("n")), new TermConstructor("MyTrue"));
+				new TermVar("n")), new TermConstructor("MyTrue")));
 
-		new Attribution(//
+		program.add(new Attribution(//
 				new TermApplication(//
 						new TermApplication(//
 								new TermConstructor("allEvenAreSup"), //
@@ -570,7 +599,7 @@ public class ExampleProgram {
 								)//
 						)//
 				)//
-		);
+		));
 	}
 
 }

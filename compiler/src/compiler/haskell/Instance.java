@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 //Instance := Type(only App) Attribution*
-public class Instance {
+public class Instance implements Instruction{
 
     private TypeApplication instanceType;
     private List<Attribution> attributions;

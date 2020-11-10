@@ -1,6 +1,6 @@
 package compiler.haskell;
 
-public class FunctionDefinition {
+public class FunctionDefinition  implements Instruction{
 
 	private String id;
 	private Type type;

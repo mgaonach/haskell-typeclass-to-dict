@@ -2,7 +2,7 @@ package compiler.haskell;
 
 import java.util.List;
 
-public class ClassDefinition {
+public class ClassDefinition implements Instruction{
 
 	private Type type;
 	private List<FunctionDefinition> functionDefinitions;

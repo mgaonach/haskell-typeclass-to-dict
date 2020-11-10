@@ -1,6 +1,6 @@
 package compiler.haskell;
 
-public class Attribution {
+public class Attribution implements Instruction{
 
 	private Term gauche;
 	private Term droite;
