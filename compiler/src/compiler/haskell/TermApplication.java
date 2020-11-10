@@ -17,4 +17,9 @@ public class TermApplication extends Term {
 	public Term getDroite() {
 		return droite;
 	}
+
+	@Override
+	public String toHaskell() {
+		return "(" + this.getGauche().toHaskell() + " " + this.getDroite().toHaskell() + ")";
+	}
 }

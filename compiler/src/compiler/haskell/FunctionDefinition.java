@@ -17,4 +17,9 @@ public class FunctionDefinition  implements Instruction{
 	public Type getType() {
 		return type;
 	}
+
+	@Override
+	public String toHaskell() {
+		return this.getId() + " :: " + this.getType().toHaskell();
+	}
 }

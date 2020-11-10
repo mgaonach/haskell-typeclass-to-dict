@@ -12,4 +12,8 @@ public class TermVar extends Term {
 		return id;
 	}
 
+	@Override
+	public String toHaskell() {
+		return this.getId();
+	}
 }

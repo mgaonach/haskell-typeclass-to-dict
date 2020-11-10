@@ -18,4 +18,8 @@ public class Attribution implements Instruction{
 		return droite;
 	}
 
+	@Override
+	public String toHaskell() {
+		return this.getLeft().toHaskell() + " = " + this.getRight().toHaskell();
+	}
 }

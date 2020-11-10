@@ -12,4 +12,8 @@ public class TypeVar extends Type {
 		return id;
 	}
 
+	@Override
+	public String toHaskell() {
+		return this.getId();
+	}
 }

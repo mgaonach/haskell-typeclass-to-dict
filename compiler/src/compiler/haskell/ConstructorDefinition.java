@@ -2,8 +2,9 @@ package compiler.haskell;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.StringJoiner;
 
-public class ConstructorDefinition {
+public class ConstructorDefinition implements Instruction{
 
 	private List<Type> params;
 	private String id;
@@ -25,4 +26,14 @@ public class ConstructorDefinition {
 		return id;
 	}
 
+	@Override
+	public String toHaskell() {
+		StringBuilder sb = new StringBuilder(this.getId());
+		StringJoiner sj = new StringJoiner(" ");
+		for(Type t : this.getParams()){
+			sj.add(t.toHaskell());
+		}
+		sb.append(sj);
+		return sb.toString();
+	}
 }

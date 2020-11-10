@@ -18,4 +18,8 @@ public class TypeConstraint extends Type {
 		return droite;
 	}
 
+	@Override
+	public String toHaskell() {
+		return "Consraint? " + this.getGauche().toHaskell() + " " + this.getDroite().toHaskell();
+	}
 }

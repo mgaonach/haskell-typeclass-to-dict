@@ -292,7 +292,8 @@ public class ExampleProgram {
 
 		List<FunctionDefinition> fds2 = new ArrayList<>(Arrays.asList(isOddDef, isEvenDef));
 		
-		// TODO : il manque la classe "Parity a", puis l'ajouter dans program
+		ClassDefinition cd2 = new ClassDefinition(typeApp2, fds2, sts2);
+		program.add(cd2);
 
 		// isOddBool
 		FunctionDefinition isOddBoolDef = new FunctionDefinition("isOddBool",

@@ -12,4 +12,8 @@ public class TermConstructor extends Term {
 		return id;
 	}
 
+	@Override
+	public String toHaskell() {
+		return this.getId();
+	}
 }
