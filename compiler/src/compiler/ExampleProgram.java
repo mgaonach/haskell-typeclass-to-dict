@@ -597,7 +597,7 @@ public class ExampleProgram {
 								new TermApplication(//
 										new TermConstructor("myOr"), //
 										new TermApplication(//
-												new TermConstructor("idOdd2"), //
+												new TermConstructor("isOdd2"), //
 												new TermVar("x")//
 										)//
 								), //

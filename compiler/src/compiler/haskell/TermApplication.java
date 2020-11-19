@@ -21,17 +21,10 @@ public class TermApplication extends Term {
 	@Override
 	public String toHaskell() {
 		StringBuilder sb = new StringBuilder();
-		if (this.getGauche() instanceof TermApplication && this.getDroite() instanceof TermApplication){
-			sb.append(" ").append(this.getGauche().toHaskell())
-					.append(" ")
-					.append(this.getDroite().toHaskell())
-					.append(" ");
-		} else {
-			sb.append(" (")
-					.append(this.getGauche().toHaskell())
-					.append(this.getDroite().toHaskell())
-					.append(") ");
-		}
+		sb.append(this.getGauche().toHaskell())
+				.append(" (")
+				.append(this.getDroite().toHaskell())
+				.append(") ");
 		return sb.toString();
 	}
 }
