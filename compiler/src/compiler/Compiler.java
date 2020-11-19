@@ -15,8 +15,10 @@ import compiler.haskell.Instance;
 import compiler.haskell.Instruction;
 import compiler.haskell.Program;
 import compiler.haskell.Term;
+import compiler.haskell.TermAny;
 import compiler.haskell.TermApplication;
 import compiler.haskell.TermConstructor;
+import compiler.haskell.TermFunction;
 import compiler.haskell.TermVar;
 import compiler.haskell.Type;
 import compiler.haskell.TypeApplication;
@@ -138,6 +140,40 @@ public class Compiler {
 			}
 		}
 		return Collections.singletonList(is).stream();
+	}
+
+	private Stream<Instruction> replaceFunctionAttributions(Instruction is) {
+		if (is instanceof Attribution) {
+			Attribution attr = (Attribution) is;
+			List<Instruction> res = new ArrayList<>();
+			res.add(new Attribution(replaceTermFunction(attr.getLeft()), replaceTermFunction(attr.getRight())));
+			return res.stream();
+		}
+		return Collections.singletonList(is).stream();
+	}
+
+	private Term replaceTermFunction(Term term) {
+		if (term instanceof TermAny) {
+			return term;
+		}
+		if (term instanceof TermApplication) {
+			TermApplication t = (TermApplication) term;
+			return new TermApplication(t.getGauche(), t.getDroite());
+		}
+		if (term instanceof TermConstructor) {
+			return term;
+		}
+		if (term instanceof TermVar) {
+			return term;
+		}
+		if (term instanceof TermFunction) {
+			String name = ((TermFunction) term).getId();
+			if (replacedFunctionsNames.contains(name)) {
+				return new TermApplication(new TermFunction(name + "'"), new TermVar("d"));
+			}
+			return term;
+		}
+		throw new RuntimeException("Term type not handled: " + term.getClass().getCanonicalName());
 	}
 
 	private TermApplication buildAccessorDictPatern(String cons, int vars) {
