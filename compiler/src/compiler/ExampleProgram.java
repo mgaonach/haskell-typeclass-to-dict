@@ -243,26 +243,26 @@ public class ExampleProgram {
 		));
 
 		program.add(new Attribution(
-				new TermApplication(
-						new TermApplication(
-								new TermFunction("areAllSup"),
-								new TermApplication(
-										new TermApplication(
-												new TermConstructor("MyCons"),
-												new TermVar("x")
-										),
-										new TermVar("l"))),
-						new TermVar("n")),
-				new TermApplication(
-						new TermFunction("myAnd"),
 						new TermApplication(
 								new TermApplication(
+										new TermFunction("areAllSup"),
 										new TermApplication(
-												new TermFunction("areAllSup"),
-												new TermVar("l")
-										),
-										new TermVar("n")
-								),
+												new TermApplication(
+														new TermConstructor("MyCons"),
+														new TermVar("x")
+												),
+												new TermVar("l"))),
+								new TermVar("n")),
+						new TermApplication(
+								new TermApplication(
+										new TermFunction("myAnd"),
+										new TermApplication(
+												new TermApplication(
+														new TermFunction("areAllSup"),
+														new TermVar("l")
+												),
+												new TermVar("n")
+										)),
 								new TermApplication(
 										new TermApplication(
 												new TermFunction("isSup"),
@@ -272,7 +272,7 @@ public class ExampleProgram {
 								)
 						)
 				)
-		));
+		);
 
 		/// 2nd example
 		Comment com2ndEx = new Comment("Second example : second class with two methods");
