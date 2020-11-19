@@ -19,8 +19,13 @@ public class TypeApplication extends Type {
 	}
 
 	@Override
-	public String toHaskell() {
-		// si gauche: TypeConstructor et droite: Type
-		return this.getGauche().toHaskell() + " (" + this.getDroite().toHaskell() + ")";
+	public String toSimpleStringName() {
+		return gauche.toSimpleStringName() + droite.toSimpleStringName();
 	}
+
+	@Override
+	public String toHaskell() {
+		return "(" + this.getGauche().toHaskell() + " " + this.getDroite().toHaskell() + ")";
+	}
+
 }

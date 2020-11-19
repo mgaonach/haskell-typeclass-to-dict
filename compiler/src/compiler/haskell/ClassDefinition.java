@@ -1,10 +1,9 @@
 package compiler.haskell;
 
 import java.util.List;
-import java.util.StringJoiner;
 import java.util.stream.Collectors;
 
-public class ClassDefinition implements Instruction{
+public class ClassDefinition implements Instruction {
 
 	private Type type;
 	private List<FunctionDefinition> functionDefinitions;
@@ -33,15 +32,18 @@ public class ClassDefinition implements Instruction{
 		StringBuilder sb = new StringBuilder("class " + this.getType().toHaskell());
 		// super types
 		if (!this.getSuperTypes().isEmpty())
-			sb.append(this.getSuperTypes().stream()
-					.map(st -> st.toHaskell())
+			sb.append(this.getSuperTypes().stream().map(st -> st.toHaskell())
 					.collect(Collectors.joining(", ", " => ", "")));
 		sb.append(" where");
 		// function definitions
 		if (!this.getFunctionDefinitions().isEmpty())
-		sb.append(this.getFunctionDefinitions().stream()
-				.map(fd -> fd.toHaskell())
-				.collect(Collectors.joining("\n   ", "\n   ", "\n")));
+			sb.append(this.getFunctionDefinitions().stream().map(fd -> fd.toHaskell())
+					.collect(Collectors.joining("\n   ", "\n   ", "\n")));
 		return sb.toString();
+	}
+
+	@Override
+	public String toString() {
+		return toHaskell();
 	}
 }

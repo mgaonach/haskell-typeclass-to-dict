@@ -1,6 +1,6 @@
 package compiler.haskell;
 
-public class FunctionDefinition  implements Instruction{
+public class FunctionDefinition implements Instruction {
 
 	private String id;
 	private Type type;
@@ -21,5 +21,10 @@ public class FunctionDefinition  implements Instruction{
 	@Override
 	public String toHaskell() {
 		return this.getId() + " :: " + this.getType().toHaskell();
+	}
+
+	@Override
+	public String toString() {
+		return toHaskell();
 	}
 }

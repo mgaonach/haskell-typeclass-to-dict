@@ -10,3 +10,4 @@
  - Séance 6 (20/10/2020) : Finition d'une première version de la grammaire. Construction du diagramme de classes (version 1.3) correspondants sur Visual Paradigm, génération du code Java correspondant. Prochaine séance : instancier un arbre syntaxique avec les classes Java obtenues.
  - Séance 7 (05/11/2020): Finalisation de la construction de l'arbre syntaxique du programme (exemples 1, 2 et 3).
  - Séance 8 (10/11/2020): Correction de l'arbre syntaxique. Création de la méthode `toHaskell()` permettant d'obtenir un fichier contenant le code Haskell généré. Développement du passage de l'arbre syntaxique avec classes de type à un arbre syntaxique sans classe de type.
+  - 19/11/2020: Suite des tâches de la séance 8.

@@ -62,11 +62,11 @@ test8 = areAllSup (MyCons my3 (MyCons my1 (MyCons my4 MyNil))) my2
 data CompareD a = CompareDict (a -> a -> MyBool)
 isSupf (CompareDict f) = f
 
-compareDBool :: CompareD MyBool
-compareDBool = CompareDict isSupBool
+compareDMyBool :: CompareD MyBool
+compareDMyBool = CompareDict isSupBool
 
-compareDNat :: CompareD  MyNat
-compareDNat = CompareDict isSupNat
+compareDMyNat :: CompareD  MyNat
+compareDMyNat = CompareDict isSupNat
 
 areAllSup' :: CompareD a -> MyList a -> a -> MyBool
 areAllSup' d MyNil n = MyTrue
@@ -74,10 +74,10 @@ areAllSup' d (MyCons x l) n = myAnd (areAllSup' d l n) (isSupf d x n)
 
 -- Tests
 
-test9 = areAllSup' compareDBool (MyCons MyTrue (MyCons MyTrue (MyCons MyTrue MyNil))) (MyFalse)
-test10 = areAllSup' compareDBool (MyCons MyTrue (MyCons MyFalse (MyCons MyTrue MyNil))) (MyFalse)
-test11 = areAllSup' compareDNat (MyCons my2 (MyCons my3 (MyCons my4 MyNil))) my1
-test12 = areAllSup' compareDNat (MyCons my3 (MyCons my1 (MyCons my4 MyNil))) my2
+test9 = areAllSup' compareDMyBool (MyCons MyTrue (MyCons MyTrue (MyCons MyTrue MyNil))) (MyFalse)
+test10 = areAllSup' compareDMyBool (MyCons MyTrue (MyCons MyFalse (MyCons MyTrue MyNil))) (MyFalse)
+test11 = areAllSup' compareDMyNat (MyCons my2 (MyCons my3 (MyCons my4 MyNil))) my1
+test12 = areAllSup' compareDMyNat (MyCons my3 (MyCons my1 (MyCons my4 MyNil))) my2
 
 -- Second example : second class with two methods
 

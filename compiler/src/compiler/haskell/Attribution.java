@@ -1,6 +1,6 @@
 package compiler.haskell;
 
-public class Attribution implements Instruction{
+public class Attribution implements Instruction {
 
 	private Term gauche;
 	private Term droite;
@@ -21,5 +21,10 @@ public class Attribution implements Instruction{
 	@Override
 	public String toHaskell() {
 		return this.getLeft().toHaskell() + " = " + this.getRight().toHaskell();
+	}
+
+	@Override
+	public String toString() {
+		return toHaskell();
 	}
 }

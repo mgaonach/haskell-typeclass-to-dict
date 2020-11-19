@@ -46,4 +46,9 @@ public class DataDefinition implements Instruction {
 		}
 		return sb.toString();
 	}
+
+	@Override
+	public String toString() {
+		return toHaskell();
+	}
 }

@@ -11,6 +11,11 @@ public class TypeVar extends Type {
 	public String getId() {
 		return id;
 	}
+	
+	@Override
+	public String toSimpleStringName() {
+		return id;
+	}
 
 	@Override
 	public String toHaskell() {

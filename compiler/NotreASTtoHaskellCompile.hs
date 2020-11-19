@@ -18,9 +18,9 @@ data (MyList a) = MyCons (a) ((MyList a))
    | MyNil  deriving Show
 
 -- First example : type class with one method
-class (Compare a) where
-   isSup :: a -> a -> MyBool
 
+data (CompareD a) = CompareDict (a -> a -> MyBool)
+isSupf (CompareDict (a) )  = a
 isSupBool :: MyBool -> MyBool -> MyBool
 isSupBool (MyTrue)  (MyFalse)  = MyTrue
 isSupBool (_)  (_)  = MyFalse
@@ -28,12 +28,10 @@ isSupNat :: MyNat -> MyNat -> MyBool
 isSupNat (MySucc (x) )  (MySucc (y) )  = isSupNat (x)  (y) 
 isSupNat (MySucc (x) )  (MyZero)  = MyTrue
 isSupNat (MyZero)  (_)  = MyFalse
-instance (Compare MyBool) where
-   isSup = isSupBool
-
-instance (Compare MyNat) where
-   isSup = isSupNat
-
-areAllSup :: (Compare a) => (MyList a) -> a -> MyBool
-areAllSup (MyNil)  (n)  = MyTrue
-areAllSup (MyCons (x)  (l) )  (n)  = myAnd (areAllSup (l)  (n) )  (isSup (x)  (n) ) 
+compareDMyBool :: (CompareD MyBool)
+compareDMyBool = CompareDict (isSupBool) 
+compareDMyNat :: (CompareD MyNat)
+compareDMyNat = CompareDict (isSupNat) 
+areAllSup' :: (CompareD a) -> (MyList a) -> a -> MyBool
+areAllSup' (d)  (MyNil)  (n)  = MyTrue
+areAllSup' (d)  (MyCons (x)  (l) )  (n)  = myAnd (areAllSup' (d)  (l)  (n) )  (isSupf (d)  (x)  (n) ) 
