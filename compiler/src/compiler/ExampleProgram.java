@@ -487,30 +487,30 @@ public class ExampleProgram {
 				new TermConstructor("MyTrue")
 		));
 		program.add(new Attribution(
-				new TermApplication(
-						new TermFunction("areAllEven"),
 						new TermApplication(
+								new TermFunction("areAllEven"),
 								new TermApplication(
-										new TermConstructor("MyCons"),
-										new TermVar("x")
-								),
-								new TermVar("l")
-						)
-				),
-				new TermApplication(
-						new TermFunction("myAnd"),
-						new TermApplication(
-								new TermApplication(
-										new TermFunction("areAllEven"),
+										new TermApplication(
+												new TermConstructor("MyCons"),
+												new TermVar("x")
+										),
 										new TermVar("l")
-								),
+								)
+						),
+						new TermApplication(
+								new TermApplication(
+										new TermFunction("myAnd"),
+										new TermApplication(
+												new TermFunction("areAllEven"),
+												new TermVar("l")
+										)),
 								new TermApplication(
 										new TermFunction("isEven"),
 										new TermVar("x")
 								)
 						)
 				)
-		));
+		);
 
 		//Exemple 3
 
