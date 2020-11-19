@@ -37,11 +37,13 @@ public class DataDefinition implements Instruction {
 		}
 		sb.append(sjConsDef);
 		// super types
-		StringJoiner sjSuperTypes = new StringJoiner(", ", " deriving ", "");
-		for (Type t : this.getSuperTypes()) {
-			sjSuperTypes.add(t.toHaskell());
+		if (!this.getSuperTypes().isEmpty()) {
+			StringJoiner sjSuperTypes = new StringJoiner(", ", " deriving ", "");
+			for (Type t : this.getSuperTypes()) {
+				sjSuperTypes.add(t.toHaskell());
+			}
+			sb.append(sjSuperTypes);
 		}
-		sb.append(sjSuperTypes);
 		return sb.toString();
 	}
 }
