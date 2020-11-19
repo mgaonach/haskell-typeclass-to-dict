@@ -19,6 +19,11 @@ public class TypeConstraint extends Type {
 	}
 
 	@Override
+	public String toSimpleStringName() {
+		return gauche.toSimpleStringName() + droite.toSimpleStringName();
+	}
+	
+	@Override
 	public String toHaskell() {
 		return this.getGauche().toHaskell() + " => " + this.getDroite().toHaskell();
 	}

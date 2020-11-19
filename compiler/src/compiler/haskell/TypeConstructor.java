@@ -13,6 +13,11 @@ public class TypeConstructor extends Type {
 	}
 
 	@Override
+	public String toSimpleStringName() {
+		return id;
+	}
+	
+	@Override
 	public String toHaskell() {
 		return this.getId();
 	}

@@ -18,6 +18,12 @@ public class TypeFunction extends Type {
 		return droite;
 	}
 
+
+	@Override
+	public String toSimpleStringName() {
+		return gauche.toSimpleStringName() + droite.toSimpleStringName();
+	}
+	
 	@Override
 	public String toHaskell() {
 		String sep = " -> ";

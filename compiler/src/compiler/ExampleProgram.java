@@ -96,7 +96,7 @@ public class ExampleProgram {
 		Comment com1stEx = new Comment("First example : type class with one method");
 		program.add(com1stEx);
 
-		Type typeVar = new TypeVar("Compare");
+		Type typeVar = new TypeConstructor("Compare");
 		Type typeParam = new TypeVar("a");
 		TypeApplication typeApp = new TypeApplication(typeVar, typeParam);
 
@@ -532,7 +532,7 @@ public class ExampleProgram {
 		program.add(parity2Def);
 
 		Instance iParity2MyBool = new Instance(//
-				new TypeApplication(new TypeConstructor("Parity2"), new TypeConstructor("MyBool")), //
+				new TypeApplication(new TypeConstructor("Parity2"), new TypeConstructor("myBool")), //
 				new Attribution(new TermConstructor("isOdd2"), new TermConstructor("isOddBool")), //
 				new Attribution(new TermConstructor("isEven2"), new TermConstructor("isEvenBool"))//
 		);

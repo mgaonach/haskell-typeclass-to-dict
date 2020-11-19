@@ -19,6 +19,12 @@ public class TypeApplication extends Type {
 	}
 
 	@Override
+	public String toSimpleStringName() {
+		return gauche.toSimpleStringName() + droite.toSimpleStringName();
+	}
+	
+
+	@Override
 	public String toHaskell() {
 		// pas besoin des ()
 		return "(" + this.getGauche().toHaskell() + " " + this.getDroite().toHaskell() + ")";
