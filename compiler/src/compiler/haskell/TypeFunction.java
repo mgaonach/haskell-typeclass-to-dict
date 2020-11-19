@@ -20,6 +20,14 @@ public class TypeFunction extends Type {
 
 	@Override
 	public String toHaskell() {
-		return this.getGauche().toHaskell() + " -> " + this.getDroite().toHaskell();
+		String sep = " -> ";
+		if (this.getGauche() instanceof TypeApplication && this.getDroite() instanceof TypeApplication){
+			sep = " => ";
+		}
+		return new StringBuilder()
+				.append(this.getGauche().toHaskell())
+				.append(sep)
+				.append(this.getDroite().toHaskell())
+				.toString();
 	}
 }

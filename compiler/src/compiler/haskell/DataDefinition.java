@@ -31,7 +31,7 @@ public class DataDefinition implements Instruction {
 	public String toHaskell() {
 		StringBuilder sb = new StringBuilder("\ndata " + this.getType().toHaskell() + " = ");
 		// constructor definitions
-		StringJoiner sjConsDef = new StringJoiner("\n\t\t| ", "", "");
+		StringJoiner sjConsDef = new StringJoiner("\n   | ", "", "");
 		for (ConstructorDefinition cd : this.getConstructorDefinitions()) {
 			sjConsDef.add(cd.toHaskell());
 		}

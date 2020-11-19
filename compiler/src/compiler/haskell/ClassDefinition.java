@@ -41,7 +41,7 @@ public class ClassDefinition implements Instruction{
 		if (!this.getFunctionDefinitions().isEmpty())
 		sb.append(this.getFunctionDefinitions().stream()
 				.map(fd -> fd.toHaskell())
-				.collect(Collectors.joining("\n\t", "\n\t", "\n")));
+				.collect(Collectors.joining("\n   ", "\n   ", "\n")));
 		return sb.toString();
 	}
 }

@@ -12,17 +12,17 @@ import java.util.function.Function;
 public class ExampleProgram {
 
 	public static Program getAST() {
-		
+
 		Program program = new Program("examples");
 
 		Comment comPrimTypeDef = new Comment("Primitive types definitions");
 		program.add(comPrimTypeDef);
-		
+
 		ConstructorDefinition myZeroDef = new ConstructorDefinition("MyZero");
 		ConstructorDefinition mySuccDef = new ConstructorDefinition("MySucc", new TypeConstructor("MyNat"));
 		DataDefinition myNatDef = new DataDefinition(new TypeConstructor("MyNat"), Arrays.asList(myZeroDef, mySuccDef),
 				Arrays.asList(new TypeConstructor("Show")));
-		
+
 		program.add(myNatDef);
 
 		ConstructorDefinition myTrueDef = new ConstructorDefinition("MyTrue");
@@ -30,19 +30,19 @@ public class ExampleProgram {
 		DataDefinition myBoolDef = new DataDefinition(new TypeConstructor("MyBool"),
 				Arrays.asList(myTrueDef, myFalseDef), Arrays.asList(new TypeConstructor("Show")));
 		program.add(myBoolDef);
-		
+
 		FunctionDefinition myAndDef = new FunctionDefinition("myAnd",
-				new TypeFunction(new TypeFunction(new TypeConstructor("myBool"), new TypeConstructor("myBool")),
-						new TypeConstructor("myBool")));
+				new TypeFunction(new TypeFunction(new TypeConstructor("MyBool"), new TypeConstructor("MyBool")),
+						new TypeConstructor("MyBool")));
 		program.add(myAndDef);
-		
+
 		program.add(new Attribution(//
 				new TermApplication(//
 						new TermApplication(//
 								new TermFunction("myAnd"), //
-								new TermConstructor("myTrue")//
+								new TermConstructor("MyTrue")//
 						), //
-						new TermConstructor("myFalse")//
+						new TermConstructor("MyFalse")//
 				), //
 				new TermConstructor("MyTrue")//
 		));
@@ -58,15 +58,15 @@ public class ExampleProgram {
 		));
 
 		FunctionDefinition myOrDef = new FunctionDefinition("myOr",
-				new TypeFunction(new TypeFunction(new TypeConstructor("myBool"), new TypeConstructor("myBool")),
-						new TypeConstructor("myBool")));
+				new TypeFunction(new TypeFunction(new TypeConstructor("MyBool"), new TypeConstructor("MyBool")),
+						new TypeConstructor("MyBool")));
 		program.add(myOrDef);
-		
+
 		program.add(new Attribution(//
 				new TermApplication(//
 						new TermApplication(//
 								new TermFunction("myOr"), //
-								new TermConstructor("myTrue")//
+								new TermConstructor("MyTrue")//
 						), //
 						new TermAny()//
 				), //
@@ -75,8 +75,8 @@ public class ExampleProgram {
 		program.add(new Attribution(//
 				new TermApplication(//
 						new TermApplication(//
-								new TermFunction("myOr"), //
-								new TermConstructor("myFalse")//
+								new TermFunction("myOr"), //A
+								new TermConstructor("MyFalse")//
 						), //
 						new TermVar("b")//
 				), //
@@ -117,7 +117,7 @@ public class ExampleProgram {
 				new TypeFunction(new TypeFunction(new TypeConstructor("MyBool"), new TypeConstructor("MyBool")),
 						new TypeConstructor(("MyBool"))));
 		program.add(isSupBoolDef);
-		
+
 		program.add(new Attribution(
 				new TermApplication(new TermApplication(new TermFunction("isSupBool"), new TermConstructor("MyTrue")),
 						new TermConstructor("MyFalse")),
@@ -232,13 +232,13 @@ public class ExampleProgram {
 		program.add(areAllSupDef);
 
 		program.add(new Attribution(
-				new TermApplication(
-						new TermFunction("areAllSup"),
 						new TermApplication(
-								new TermConstructor("MyNil"),
+								new TermApplication(
+										new TermFunction("areAllSup"),
+										new TermConstructor("MyNil")
+										),
 								new TermVar("n")
-						)
-				),
+						),
 				new TermConstructor("MyTrue")
 		));
 
@@ -312,7 +312,7 @@ public class ExampleProgram {
 				)
 		);
 		program.add(isOddBoolDef);
-		
+
 		program.add(new Attribution(
 				new TermApplication(
 						new TermFunction("isOddBool"),
@@ -348,7 +348,7 @@ public class ExampleProgram {
 		FunctionDefinition isOddNatDef = new FunctionDefinition("isOddNat",
 				new TypeFunction(
 						new TypeConstructor("MyNat"),
-						new TypeConstructor("MyFalse")
+						new TypeConstructor("MyBool")
 				)
 		);
 		program.add(isOddNatDef);
@@ -394,7 +394,7 @@ public class ExampleProgram {
 				)
 		);
 		program.add(isEvenNatDef);
-		
+
 		program.add(new Attribution(
 				new TermApplication(
 						new TermFunction("isEvenNat"),
@@ -435,16 +435,16 @@ public class ExampleProgram {
 						new TypeVar("Parity"),
 						new TypeConstructor("MyBool")
 				),
-				
-						new Attribution(
-								new TermFunction("isOdd"),
-								new TermFunction("isOddBool")
-						),
-						new Attribution(
-								new TermFunction("isEven"),
-								new TermFunction("isEvenBool")
-						)
-				
+
+				new Attribution(
+						new TermFunction("isOdd"),
+						new TermFunction("isOddBool")
+				),
+				new Attribution(
+						new TermFunction("isEven"),
+						new TermFunction("isEvenBool")
+				)
+
 		);
 		program.add(parityMyBool);
 		Instance parityMyNat = new Instance(
@@ -452,16 +452,16 @@ public class ExampleProgram {
 						new TypeVar("Parity"),
 						new TypeConstructor("MyNat")
 				),
-				
-						new Attribution(
-								new TermFunction("isOdd"),
-								new TermFunction("isOddNat")
-						),
-						new Attribution(
-								new TermFunction("isEven"),
-								new TermFunction("isEvenNat")
-						)
-				
+
+				new Attribution(
+						new TermFunction("isOdd"),
+						new TermFunction("isOddNat")
+				),
+				new Attribution(
+						new TermFunction("isEven"),
+						new TermFunction("isEvenNat")
+				)
+
 		);
 		program.add(parityMyNat);
 
@@ -535,7 +535,7 @@ public class ExampleProgram {
 		program.add(parity2Def);
 
 		Instance iParity2MyBool = new Instance(//
-				new TypeApplication(new TypeConstructor("Parity2"), new TypeConstructor("myBool")), //
+				new TypeApplication(new TypeConstructor("Parity2"), new TypeConstructor("MyBool")), //
 				new Attribution(new TermConstructor("isOdd2"), new TermConstructor("isOddBool")), //
 				new Attribution(new TermConstructor("isEven2"), new TermConstructor("isEvenBool"))//
 		);
@@ -614,7 +614,7 @@ public class ExampleProgram {
 						)//
 				)//
 		));
-		
+
 		return program;
 	}
 
