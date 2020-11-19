@@ -18,4 +18,9 @@ public class TypeConstraint extends Type {
 		return droite;
 	}
 
+	@Override
+	public String toSimpleStringName() {
+		return gauche.toSimpleStringName() + droite.toSimpleStringName();
+	}
+
 }

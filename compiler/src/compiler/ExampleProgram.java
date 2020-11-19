@@ -90,7 +90,7 @@ public class ExampleProgram {
 		program.add(myListDef);
 		/// 1st example
 
-		Type typeVar = new TypeVar("Compare");
+		Type typeVar = new TypeConstructor("Compare");
 		Type typeParam = new TypeVar("a");
 		TypeApplication typeApp = new TypeApplication(typeVar, typeParam);
 
@@ -270,7 +270,7 @@ public class ExampleProgram {
 						)
 				)
 		));
-
+/*
 		/// 2nd example
 		Type typeVar2 = new TypeConstructor("Parity");
 		Type typeParam2 = new TypeVar("a");
@@ -600,7 +600,7 @@ public class ExampleProgram {
 						)//
 				)//
 		));
-		
+		*/
 		return program;
 	}
 

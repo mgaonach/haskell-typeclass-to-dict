@@ -17,11 +17,12 @@ public class Program {
 
 	}
 
+	public List<Instruction> getInstructions() {
+		return instructions;
+	}
+
 	public String getName() {
 		return name;
 	}
 
-	public Program convertClassToDict() {
-		return this;
-	}
 }

@@ -17,4 +17,9 @@ public class TypeApplication extends Type {
 	public Type getDroite() {
 		return droite;
 	}
+
+	@Override
+	public String toSimpleStringName() {
+		return gauche.toSimpleStringName() + droite.toSimpleStringName();
+	}
 }

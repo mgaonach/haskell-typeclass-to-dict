@@ -12,4 +12,9 @@ public class TypeConstructor extends Type {
 		return id;
 	}
 
+	@Override
+	public String toSimpleStringName() {
+		return id;
+	}
+
 }

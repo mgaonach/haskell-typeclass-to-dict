@@ -12,4 +12,9 @@ public class TypeVar extends Type {
 		return id;
 	}
 
+	@Override
+	public String toSimpleStringName() {
+		return id;
+	}
+
 }
