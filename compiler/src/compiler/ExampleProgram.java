@@ -232,30 +232,27 @@ public class ExampleProgram {
 		program.add(areAllSupDef);
 
 		program.add(new Attribution(
+				new TermApplication(
 						new TermApplication(
-								new TermApplication(
-										new TermFunction("areAllSup"),
-										new TermConstructor("MyNil")
-										),
-								new TermVar("n")
+								new TermFunction("areAllSup"),
+								new TermConstructor("MyNil")
 						),
+						new TermVar("n")
+				),
 				new TermConstructor("MyTrue")
 		));
 
 		program.add(new Attribution(
 				new TermApplication(
-						new TermFunction("areAllSup"),
 						new TermApplication(
+								new TermFunction("areAllSup"),
 								new TermApplication(
 										new TermApplication(
 												new TermConstructor("MyCons"),
 												new TermVar("x")
 										),
-										new TermVar("l")
-								),
-								new TermVar("n")
-						)
-				),
+										new TermVar("l"))),
+						new TermVar("n")),
 				new TermApplication(
 						new TermFunction("myAnd"),
 						new TermApplication(
